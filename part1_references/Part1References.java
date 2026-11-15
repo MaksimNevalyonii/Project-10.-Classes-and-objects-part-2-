@@ -1,28 +1,26 @@
 package part1_references;
 
-// Part 1. References: assignments and arguments.
-// Run this class to see both demonstrations in the console.
 public class Part1References {
 
     public static void main(String[] args) {
-        // Part 1.1 Assignments
+        // Часть 1.1 Присваивание
         demonstrateAssignments();
 
         System.out.println();
 
-        // Part 1.2 Arguments
+        // Часть 1.2 Аргументы
         demonstrateArguments();
     }
 
-    // Part 1.1 Assignments: two variables, one object
+    // Часть 1.1 Присваивание: две переменные, один объект
     private static void demonstrateAssignments() {
         System.out.println("=== Part 1.1 Assignments ===");
 
-        // Create an object of the class. 'first' holds a reference (address) to it.
+        // Создаём объект класса. В 'first' лежит ссылка (адрес) на него.
         Person first = new Person("Alice", 20);
 
-        // Assign the SAME reference to a second variable.
-        // No new object is created: both variables point to one object in memory.
+        // Присваиваем ЭТУ ЖЕ ссылку второй переменной.
+        // Новый объект не создаётся: обе переменные указывают на один объект в памяти.
         Person second = first;
 
         System.out.println("Initial state:");
@@ -30,47 +28,47 @@ public class Part1References {
         System.out.println("second -> " + second);
         System.out.println("Same object? (first == second): " + (first == second));
 
-        // Change properties through the first variable.
+        // Меняем свойства через первую переменную.
         first.name = "Bob";
         System.out.println("\nAfter first.name = \"Bob\":");
         System.out.println("first  -> " + first);
-        System.out.println("second -> " + second); // the change is visible here too
+        System.out.println("second -> " + second); 
 
-        // Change properties through the second variable.
+        // Меняем свойства через вторую переменную.
         second.age = 35;
         System.out.println("\nAfter second.age = 35:");
-        System.out.println("first  -> " + first);  // the change is visible here too
+        System.out.println("first  -> " + first);  // изменение видно и здесь
         System.out.println("second -> " + second);
 
         System.out.println("\nConclusion: both variables point to the same object,"
                 + " so a change made via one is seen via the other.");
     }
 
-    // Part 1.2 Arguments: passing an object into a method
+    // Часть 1.2 Аргументы: передача объекта в метод
     private static void demonstrateArguments() {
         System.out.println("=== Part 1.2 Arguments ===");
 
-        // Create an object of the class.
+        // Создаём объект класса.
         Car car = new Car("Toyota Corolla", 50000);
         System.out.println("Before method call: " + car);
 
-        // Pass the object into a method. Java copies the REFERENCE (not the object),
-        // so the method parameter points to the same object as 'car'.
+        // Передаём объект в метод. Java копирует ССЫЛКУ (а не сам объект),
+        // поэтому параметр метода указывает на тот же объект, что и 'car'.
         addMileage(car, 1200);
 
-        // Check the property outside the method: the change is visible,
-        // because the method modified the original object.
+        // Проверяем свойство вне метода: изменение видно,
+        // потому что метод изменил исходный объект.
         System.out.println("After method call:  " + car);
 
         System.out.println("\nConclusion: the method changed the original object"
                 + " because it received a copy of the reference to it.");
     }
 
-    // Receives a reference to a Car and changes its property.
-    // Parameter c: reference to the original Car object.
-    // Parameter distance: kilometers to add to the mileage.
+    // Получает ссылку на Car и меняет его свойство.
+    // Параметр c: ссылка на исходный объект Car.
+    // Параметр distance: сколько километров добавить к пробегу.
     private static void addMileage(Car c, int distance) {
-        // Modify the object's property via the received reference.
+        // Меняем свойство объекта через полученную ссылку.
         c.mileage += distance;
         System.out.println("Inside method:      " + c);
     }

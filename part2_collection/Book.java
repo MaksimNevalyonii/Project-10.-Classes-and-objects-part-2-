@@ -1,17 +1,17 @@
 package part2_collection;
 
-// Part 2.1 Custom class: represents a book (an item from my area of interest).
+// Часть 2.1 Собственный класс: описывает книгу (предмет из моей области интересов).
 public class Book {
-    // String properties
+    // Строковые свойства
     private String title;
     private String author;
     private String genre;
 
-    // Numeric properties (year is used for sorting)
+    // Числовые свойства (year используется для сортировки)
     private int year;
     private double rating;
 
-    // Constructor sets all properties
+    // Конструктор задаёт все свойства
     public Book(String title, String author, String genre, int year, double rating) {
         this.title = title;
         this.author = author;
@@ -20,7 +20,7 @@ public class Book {
         this.rating = rating;
     }
 
-    // Getters
+    // Геттер просто возвращает значение приватного поля. Остальные четыре геттера делают то же самое.
     public String getTitle() {
         return title;
     }
@@ -41,7 +41,7 @@ public class Book {
         return rating;
     }
 
-    // Detailed one-line description of the book
+    // Подробное описание книги в одну строку
     @Override
     public String toString() {
         return String.format("\"%s\" by %s | genre: %s | year: %d | rating: %.1f",

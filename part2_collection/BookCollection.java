@@ -1,23 +1,23 @@
 package part2_collection;
 
-// Part 2.1 Collection class: stores Book objects in a private array.
+// Часть 2.1 Класс-коллекция: хранит объекты Book в приватном массиве.
 public class BookCollection {
-    // Part 2.1.1 Private property: number of stored elements
+    // Часть 2.1.1 Приватное свойство: количество хранимых элементов
     private int count;
 
-    // Part 2.1.2 Private array to store objects
+    // Часть 2.1.2 Приватный массив для хранения объектов
     private Book[] books;
 
-    // Creates an empty collection with the given initial capacity
+    // Создаёт пустую коллекцию с заданной начальной вместимостью
     public BookCollection(int capacity) {
         books = new Book[capacity];
         count = 0;
     }
 
-    // Part 2.1.3 add(newObj): adds a new item (the array grows if it is full)
+    // Часть 2.1.3 add(newObj): добавляет новый элемент (массив увеличивается, если он заполнен)
     public void add(Book newObj) {
         if (count == books.length) {
-            // Array is full: create a bigger one and copy the elements
+            // Массив заполнен: создаём массив побольше и копируем элементы
             Book[] bigger = new Book[books.length * 2];
             for (int i = 0; i < count; i++) {
                 bigger[i] = books[i];
@@ -28,7 +28,7 @@ public class BookCollection {
         count++;
     }
 
-    // Part 2.1.4 printOne(i): prints detailed information about one item
+    // Часть 2.1.4 printOne(i): выводит подробную информацию об одном элементе
     public void printOne(int i) {
         if (i < 0 || i >= count) {
             System.out.println("No book with index " + i);
@@ -37,7 +37,7 @@ public class BookCollection {
         System.out.println((i + 1) + ". " + books[i]);
     }
 
-    // Part 2.1.4 print(): prints the whole list
+    // Часть 2.1.4 print(): выводит весь список
     public void print() {
         if (count == 0) {
             System.out.println("The collection is empty.");
@@ -48,7 +48,7 @@ public class BookCollection {
         }
     }
 
-    // Part 2.1.5 find(s): searches by the title field (case-insensitive, partial match)
+    // Часть 2.1.5 find(s): поиск по полю title (без учёта регистра, по части строки)
     public void find(String s) {
         System.out.println("Search by title containing \"" + s + "\":");
         boolean found = false;
@@ -63,13 +63,13 @@ public class BookCollection {
         }
     }
 
-    // Part 2.1.6 sort(): bubble sort by the numeric property (year, ascending)
+    // Часть 2.1.6 sort(): сортировка пузырьком по числовому свойству (year, по возрастанию)
     public void sort() {
         for (int pass = 0; pass < count - 1; pass++) {
-            // After each pass the largest remaining element "bubbles" to the end
+            // После каждого прохода самый большой из оставшихся элементов "всплывает" в конец
             for (int i = 0; i < count - 1 - pass; i++) {
                 if (books[i].getYear() > books[i + 1].getYear()) {
-                    // Swap neighbours that are in the wrong order
+                    // Меняем местами соседние элементы, стоящие в неправильном порядке
                     Book temp = books[i];
                     books[i] = books[i + 1];
                     books[i + 1] = temp;
@@ -78,7 +78,7 @@ public class BookCollection {
         }
     }
 
-    // Part 2.1.7 Search by an additional string property (genre)
+    // Часть 2.1.7 Поиск по дополнительному строковому свойству (genre)
     public void findByGenre(String genre) {
         System.out.println("Search by genre \"" + genre + "\":");
         boolean found = false;
@@ -93,7 +93,7 @@ public class BookCollection {
         }
     }
 
-    // Part 2.1.7 Search by two properties simultaneously (author and minimal year)
+    // Часть 2.1.7 Поиск сразу по двум свойствам (автор и минимальный год)
     public void findByAuthorAndYear(String author, int minYear) {
         System.out.println("Search by author \"" + author + "\" and year >= " + minYear + ":");
         boolean found = false;
@@ -109,7 +109,7 @@ public class BookCollection {
         }
     }
 
-    // Returns the number of stored elements (count itself is private)
+    // Возвращает количество хранимых элементов (само поле count приватное)
     public int size() {
         return count;
     }
